@@ -25,7 +25,7 @@ services:
     ports:
       - "${API_PORT}:${API_PORT}"
     networks:
-      - todo-network
+      -  coop_network
   db:
     image: postgres:alpine3.17
     container_name: postgres-db
