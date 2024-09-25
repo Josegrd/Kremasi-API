@@ -25,7 +25,7 @@ services:
     ports:
       - "${API_PORT}:${API_PORT}"
     networks:
-      -  coop_network
+      - coop_network
   db:
     image: postgres:alpine3.17
     container_name: postgres-db
@@ -36,7 +36,7 @@ services:
     volumes:
       - db-data:/var/lib/postgresql/data
     networks:
-      -  coop_network
+      - coop_network
 volumes:
   db-data:
 networks:
