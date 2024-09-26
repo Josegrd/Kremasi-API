@@ -4,7 +4,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: enigma-coop-2
+    container_name: enigma-coop-3
     depends_on:
       - db
     environment:
