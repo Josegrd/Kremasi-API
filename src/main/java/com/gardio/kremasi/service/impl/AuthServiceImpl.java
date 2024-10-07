@@ -6,6 +6,7 @@ import com.gardio.kremasi.entity.Role;
 import com.gardio.kremasi.entity.UserCredential;
 import com.gardio.kremasi.model.request.AuthRequest;
 import com.gardio.kremasi.model.request.NasabahRequest;
+import com.gardio.kremasi.model.response.LoginResponse;
 import com.gardio.kremasi.model.response.NasabahResponse;
 import com.gardio.kremasi.repository.UserCredentialRepository;
 import com.gardio.kremasi.security.JwtUtils;
@@ -91,7 +92,7 @@ public class AuthServiceImpl implements AuthService {
     }
 
     @Override
-    public String login(AuthRequest authRequest) {
+    public LoginResponse login(AuthRequest authRequest) {
         Authentication authentication = new UsernamePasswordAuthenticationToken(
                 authRequest.getUsername(),
                 authRequest.getPassword()
@@ -102,6 +103,9 @@ public class AuthServiceImpl implements AuthService {
         SecurityContextHolder.getContext().setAuthentication(authenticated);
         // berikan token
         UserCredential userCredential = (UserCredential) authenticated.getPrincipal();
-        return jwtUtils.generateToken(userCredential);
+        return LoginResponse.builder()
+                .token(jwtUtils.generateToken(userCredential))
+                .role(userCredential.getRoles().get(0).getRole().name())
+                .build();
     }
 }

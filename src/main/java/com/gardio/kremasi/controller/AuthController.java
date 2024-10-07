@@ -4,6 +4,7 @@ package com.gardio.kremasi.controller;
 import com.gardio.kremasi.constant.PathApi;
 import com.gardio.kremasi.model.request.AuthRequest;
 import com.gardio.kremasi.model.request.NasabahRequest;
+import com.gardio.kremasi.model.response.LoginResponse;
 import com.gardio.kremasi.model.response.NasabahResponse;
 import com.gardio.kremasi.model.response.WebResponse;
 import com.gardio.kremasi.service.AuthService;
@@ -38,8 +39,8 @@ public class AuthController {
     @PostMapping("/signin")
     public ResponseEntity<?> login(@RequestBody AuthRequest authRequest){
         log.info("Login Request: {}", authRequest);
-        String token = authService.login(authRequest);
-        WebResponse<String> response = WebResponse.<String>builder()
+        LoginResponse token = authService.login(authRequest);
+        WebResponse<LoginResponse> response = WebResponse.<LoginResponse>builder()
                 .status(HttpStatus.OK.getReasonPhrase())
                 .message("Success Login")
                 .data(token)
