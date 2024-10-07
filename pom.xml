@@ -8,10 +8,10 @@
 		<version>3.2.3</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.enigmacamp</groupId>
-	<artifactId>enigma-coop</artifactId>
+	<groupId>com.gardio</groupId>
+	<artifactId>Kremasi</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>enigma-coop</name>
+	<name>kremasi</name>
 	<description>Belajar Spring Boot</description>
 	<properties>
 		<java.version>17</java.version>
@@ -57,6 +57,11 @@
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-test</artifactId>
 			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springdoc</groupId>
+			<artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+			<version>2.5.0</version>
 		</dependency>
 	</dependencies>
 

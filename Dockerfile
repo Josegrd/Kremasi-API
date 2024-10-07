@@ -14,6 +14,6 @@ FROM openjdk:17-jdk-alpine
 WORKDIR /app
 
 # Copy artifact .jar yang dibangun dari stage build ke direktori kerja container
-COPY --from=build /app/target/enigma-coop-0.0.1-SNAPSHOT.jar /app/enigma-coop-0.0.1-SNAPSHOT.jar
+COPY --from=build /app/target/kremasi-coop-0.0.1-SNAPSHOT.jar /app/kremasi-coop-0.0.1-SNAPSHOT.jar
 
-CMD ["java", "-jar", "/app/enigma-coop-0.0.1-SNAPSHOT.jar"]
+CMD ["java", "-jar", "/app/kremasi-coop-0.0.1-SNAPSHOT.jar"]
