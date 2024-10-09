@@ -19,6 +19,7 @@ public class PathApi {
     public static class SubBashPath {
         public static final String SIGNUP = "/signup" ;
         public static final String SIGNIN = "/signin" ;
+        public static final String CHECK_EMAIL = "/check-email" ;
         public static final String BY_ID = "/{id}" ;
         public static final String IMAGE_ID = "/{imageId}";
         public static final String APPROVE_LOAN = "/approved/{id}";

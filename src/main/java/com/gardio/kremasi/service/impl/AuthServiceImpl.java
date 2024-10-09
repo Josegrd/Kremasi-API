@@ -23,6 +23,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 import java.util.Optional;
@@ -107,5 +108,13 @@ public class AuthServiceImpl implements AuthService {
                 .token(jwtUtils.generateToken(userCredential))
                 .role(userCredential.getRoles().get(0).getRole().name())
                 .build();
+    }
+
+    // check email
+    public Boolean checkEmailUsername(String username, String email) {
+        Boolean checkEmail = nasabahService.findByEmail(email);
+        Boolean checkUsername = credentialRepository.findByUsername(username).isPresent();
+        if (checkEmail && checkUsername) return true;
+        return false;
     }
 }

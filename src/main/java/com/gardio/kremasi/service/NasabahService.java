@@ -12,4 +12,7 @@ public interface NasabahService {
     Nasabah update(NasabahRequest payload);
     void deleteById(String id);
     Nasabah findByUsername(String name);
+    Boolean findByEmail(String email);
+
+    Nasabah findNasabahByUserCredential(String userCredential);
 }

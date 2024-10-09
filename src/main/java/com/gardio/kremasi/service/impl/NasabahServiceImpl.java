@@ -6,7 +6,6 @@ import com.gardio.kremasi.entity.Saving;
 import com.gardio.kremasi.entity.UserCredential;
 import com.gardio.kremasi.model.request.NasabahRequest;
 import com.gardio.kremasi.repository.NasabahRepository;
-import com.enigmacamp.enigmacoop.service.*;
 import com.gardio.kremasi.service.NasabahService;
 import com.gardio.kremasi.service.SavingService;
 import lombok.AllArgsConstructor;
@@ -80,6 +79,15 @@ public class NasabahServiceImpl implements NasabahService {
     }
 
     @Override
+    public Boolean findByEmail(String email) {
+        Boolean checkEmail = nasabahRepository.findByEmail(email).isPresent();
+        if (checkEmail) return true;
+        return false;
+    }
+
+
+
+    @Override
     public void deleteById(String id) {
         this.getById(id);
         nasabahRepository.deleteById(id);
@@ -89,6 +97,15 @@ public class NasabahServiceImpl implements NasabahService {
     public Nasabah findByUsername(String username) {
         Optional<Nasabah> optionalNasabah = Optional.ofNullable(nasabahRepository.getNasabahByUserCredential_Username(username));
         if (optionalNasabah.isPresent()) return  optionalNasabah.get();
+        throw new ResponseStatusException(HttpStatus.NOT_FOUND,"Nasabah Not Found");
+    }
+
+
+    @Override
+    public Nasabah findNasabahByUserCredential(String userCredential) {
+        Nasabah optionalNasabah = nasabahRepository.getNasabahByUserCredential_Id(userCredential);
+        System.out.println(optionalNasabah);
+        if (optionalNasabah != null) return optionalNasabah;
         throw new ResponseStatusException(HttpStatus.NOT_FOUND,"Nasabah Not Found");
     }
 

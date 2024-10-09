@@ -13,10 +13,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping(PathApi.BasePath.AUTH)
@@ -44,6 +41,17 @@ public class AuthController {
                 .status(HttpStatus.OK.getReasonPhrase())
                 .message("Success Login")
                 .data(token)
+                .build();
+        return ResponseEntity.ok(response);
+    }
+
+    @GetMapping(PathApi.SubBashPath.CHECK_EMAIL)
+    public ResponseEntity<?> checkEmail(@RequestParam String email, @RequestParam String username){
+        Boolean result = authService.checkEmailUsername(username, email);
+        WebResponse<Boolean> response = WebResponse.<Boolean>builder()
+                .status(HttpStatus.OK.getReasonPhrase())
+                .message("Success check email")
+                .data(result)
                 .build();
         return ResponseEntity.ok(response);
     }
