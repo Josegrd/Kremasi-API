@@ -31,22 +31,23 @@ public class LoanPaymentServiceImpl implements LoanPaymentService {
                 .loan(findloan)
                 .build();
         LoanPayment savedLoanPayment = loanPaymentRepository.saveAndFlush(loanPayment);
-        Payment payment = paymentService.create(loanPayment);
-        savedLoanPayment.setPayment(payment);
-        PaymentResponse paymentResponse = PaymentResponse.builder()
-                .id(payment.getId())
-                .token(payment.getToken())
-                .redirectUrl(payment.getRedirectUrl())
-                .transactionStatus(payment.getTransactionStatus())
-                .build();
-        return LoanPaymentResponse.builder()
-                .id(savedLoanPayment.getId())
-                .loanId(findloan.getId())
-                .nasabahId(findloan.getNasabah().getId())
-                .amount(amount)
-                .date(savedLoanPayment.getDate())
-                .paymentResponse(paymentResponse)
-                .build();
+//        Payment payment = paymentService.create(loanPayment);
+//        savedLoanPayment.setPayment(payment);
+//        PaymentResponse paymentResponse = PaymentResponse.builder()
+//                .id(payment.getId())
+//                .token(payment.getToken())
+//                .redirectUrl(payment.getRedirectUrl())
+//                .transactionStatus(payment.getTransactionStatus())
+//                .build();
+//        return LoanPaymentResponse.builder()
+//                .id(savedLoanPayment.getId())
+//                .loanId(findloan.getId())
+//                .nasabahId(findloan.getNasabah().getId())
+//                .amount(amount)
+//                .date(savedLoanPayment.getDate())
+//                .paymentResponse(paymentResponse)
+//                .build();
+        return null;
     }
 
     @Override

@@ -10,6 +10,8 @@ import java.util.Optional;
 public interface NasabahRepository extends JpaRepository<Nasabah, String> {
     Nasabah getNasabahByUserCredential_Username(String username);
     Optional<Nasabah> findByEmail(String email);
+    Optional<Nasabah> findByNik(String nik);
+    Optional<Nasabah> findByPhoneNumber(String phoneNumber);
     Nasabah getNasabahByUserCredential_Id(String userCredentialId);
     Optional<Nasabah> findIdByUserCredential_Id(String username);
 }

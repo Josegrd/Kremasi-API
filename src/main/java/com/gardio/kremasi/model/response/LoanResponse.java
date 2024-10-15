@@ -21,7 +21,7 @@ public class LoanResponse{
     private Double interestRate;
     private LoanStatus status;
     private Nasabah nasabah;
-    private List<LoanDetail> loanDetails;
+//    private List<LoanDetail> loanDetails;
     @JsonFormat(pattern = "yyyy-MM-dd hh:mm:ss a", timezone = "Asia/Jakarta")
     private Date startDate;
     @JsonFormat(pattern = "yyyy-MM-dd hh:mm:ss a", timezone = "Asia/Jakarta")
@@ -29,4 +29,6 @@ public class LoanResponse{
     private Long totalPayment;
     private Integer installmentCount;
     private LoanType loanType;
+    private List<LoanDetailResponse> loanDetails;
+
 }

@@ -8,5 +8,5 @@ import java.util.List;
 
 public interface LoanRepository extends JpaRepository<Loan,String>, JpaSpecificationExecutor<Loan> {
     List<Loan> findByNasabahId(String nasabahId); // load list loan berdasarkan id nasabah, nasabah one to many loan
-
+    List<Loan> findAllByNasabahId(String nasabahId); // load list loan berdasarkan id nasabah, nasabah one to many loan
 }

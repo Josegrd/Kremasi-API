@@ -5,6 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.time.LocalDate;
 import java.util.Date;
 
 
@@ -15,7 +17,7 @@ import java.util.Date;
 public class LoanDetailResponse {
 
     private String id;
-    private Date transactionDate;
-    private Long nominal;
-    private LoanStatus loanStatus;
+    private LocalDate dueDate;
+    private double amount;
+    private boolean paid;
 }

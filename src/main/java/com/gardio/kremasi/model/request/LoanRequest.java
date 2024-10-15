@@ -17,5 +17,5 @@ public class LoanRequest {
     private String loanTypeId;
     private String installmentTypeId;
     private Long amount;
-    private List<LoanDetail> loanDetails = new ArrayList<>();
+//    private List<LoanDetail> loanDetails = new ArrayList<>();
 }

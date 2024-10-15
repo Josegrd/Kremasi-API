@@ -1,5 +1,6 @@
 package com.gardio.kremasi.entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.gardio.kremasi.constant.LoanStatus;
 import com.gardio.kremasi.constant.PathDb;
 import com.fasterxml.jackson.annotation.JsonFormat;
@@ -29,8 +30,9 @@ public class Loan extends AuditEntity{
     @JoinColumn(name = "nasabah_id")
     private Nasabah nasabah;
 
-    @OneToMany(mappedBy = "loan", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    private List<LoanDetail> loanDetails = new ArrayList<>();
+    @OneToMany(mappedBy = "loan", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JsonManagedReference
+    private List<LoanDetail> loanDetails;
 
     @Temporal(TemporalType.TIMESTAMP)
     @Column(nullable = false,updatable = false)

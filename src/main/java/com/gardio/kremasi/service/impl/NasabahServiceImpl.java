@@ -69,6 +69,17 @@ public class NasabahServiceImpl implements NasabahService {
     @Override
     public Nasabah update(NasabahRequest payload) {
         Nasabah nasabah = findByIdOrThrowNotFound(payload.getId());
+        if (nasabahRepository.findByEmail(payload.getEmail()).filter(n -> !n.getId().equals(payload.getId())).isPresent()) {
+            throw new ResponseStatusException(HttpStatus.CONFLICT, "Email already exists");
+        }
+
+        if (nasabahRepository.findByPhoneNumber(payload.getPhoneNumber()).filter(n -> !n.getId().equals(payload.getId())).isPresent()) {
+            throw new ResponseStatusException(HttpStatus.CONFLICT, "Phone number already exists");
+        }
+
+        if (nasabahRepository.findByNik(payload.getNik()).filter(n -> !n.getId().equals(payload.getId())).isPresent()) {
+            throw new ResponseStatusException(HttpStatus.CONFLICT, "NIK already exists");
+        }
         nasabah.setFullName(payload.getFullName());
         nasabah.setEmail(payload.getEmail());
         nasabah.setPhoneNumber(payload.getPhoneNumber());
@@ -112,6 +123,7 @@ public class NasabahServiceImpl implements NasabahService {
     private Nasabah findByIdOrThrowNotFound(String id){
         return nasabahRepository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,"Data not Found"));
     }
+
 
 
 }

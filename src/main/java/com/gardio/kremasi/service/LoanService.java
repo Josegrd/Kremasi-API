@@ -14,4 +14,8 @@ public interface LoanService {
     Page<Loan> getAll(SearchLoanRequest searchLoanRequest);
     Loan getById(String id);
     Loan approveLoanById(String id);
+    List<LoanResponse> getAllLoans();
+    LoanResponse getLoanById(String id);
+    List<LoanResponse> getLoansByNasabah(String id);
+    LoanResponse approveLoanByIdLoan(String id);
 }
